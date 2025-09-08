@@ -4,5 +4,23 @@
     "password": "test123",
     "username": "User",
     "rank": "owner"
+  },
+  {
+    "profile_name": "mod1",
+    "password": "modpass",
+    "username": "Moderator",
+    "rank": "mod"
+  },
+  {
+    "profile_name": "gast",
+    "password": "gast123",
+    "username": "Gast",
+    "rank": "user"
+  },
+  {
+    "profile_name": "adminx",
+    "password": "secure456",
+    "username": "AdminX",
+    "rank": "owner"
   }
 ]

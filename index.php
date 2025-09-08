@@ -8,7 +8,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 // Rang prüfen
-$rank = $_SESSION['rank'] ?? 'user'; // Fallback zu 'user'
+$rank = $_SESSION['rank'] ?? 'user';
 $isOwner = strtolower($rank) === 'owner';
 ?>
 
@@ -32,6 +32,12 @@ $isOwner = strtolower($rank) === 'owner';
     <form method="POST" action="logout.php">
         <button type="submit">Logout</button>
     </form>
+
+    <?php if ($isOwner): ?>
+        <form method="GET" action="add_user.php">
+            <button type="submit">🧑‍💻 Benutzer hinzufügen</button>
+        </form>
+    <?php endif; ?>
 
     <script src="main.js"></script>
 </body>

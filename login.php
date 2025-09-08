@@ -24,7 +24,7 @@ foreach ($users as $user) {
 }
 
 if ($found) {
-    header("Location: index.html");
+    header("Location: index.php");
     exit;
 } else {
     echo "<h2>❌ Login fehlgeschlagen</h2>";

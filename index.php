@@ -8,7 +8,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 // Rang prüfen
-$rank = $_SESSION['rank'] ?? 'user'; // Fallback zu 'user' falls nicht gesetzt
+$rank = $_SESSION['rank'] ?? 'user'; // Fallback zu 'user'
 $isOwner = strtolower($rank) === 'owner';
 ?>
 
@@ -16,15 +16,14 @@ $isOwner = strtolower($rank) === 'owner';
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Startseite</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>
         👋 Willkommen, <?php echo htmlspecialchars($_SESSION['username']); ?>
-        <?php if ($isOwner): ?>
-            👑
-        <?php endif; ?>
+        <?php if ($isOwner): ?> 👑 <?php endif; ?>
     </h1>
 
     <p>Du bist eingeloggt als <strong><?php echo htmlspecialchars($_SESSION['profile_name']); ?></strong></p>
@@ -33,5 +32,7 @@ $isOwner = strtolower($rank) === 'owner';
     <form method="POST" action="logout.php">
         <button type="submit">Logout</button>
     </form>
+
+    <script src="main.js"></script>
 </body>
 </html>

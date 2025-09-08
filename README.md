@@ -1,2 +1,1 @@
-# server
-my server
+test 1

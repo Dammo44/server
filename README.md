@@ -1,7 +1,13 @@
-# 🔐 Damian's Server Setup
+# 🔐 Dammos's Server Setup
 
 Ein einfaches Webserver-Projekt mit HTML, CSS, JS und Login-Funktion — bereit für den Einsatz auf einem Apache2-Server.
 
+---
+##  📄 downloade wichtiger sachen
+
+#save vergesse ich es einzutragen
+
+-sudo apt install php libapache2-mod-php
 ---
 
 ## 📦 Projektübersicht

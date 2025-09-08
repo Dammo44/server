@@ -1,30 +1,50 @@
 #!/bin/bash
 
-echo "🚀 Lade Projekt von GitHub herunter und deploye nach /var/www/html..."
+echo "🚀 Starte Deployment für Dammo's Server..."
 
-# 🔐 Root-Rechte prüfen
+# Root-Rechte prüfen
 if [ "$EUID" -ne 0 ]; then
   echo "❌ Bitte führe dieses Skript mit sudo aus."
   exit 1
 fi
 
-# 📥 GitHub-Link
-GIT_REPO="https://github.com/Dammo44/server.git"
+# Zielverzeichnis
+TARGET="/var/www/html"
 
-# 📁 Temporäres Verzeichnis
-TMP_DIR="/tmp/server"
+# Repository klonen
+echo "📁 Lade Projekt von GitHub..."
+rm -rf "$TARGET"/*
+git clone https://github.com/Dammo44/server.git /tmp/server
 
-# 🧹 Vorheriges Verzeichnis löschen
-rm -rf $TMP_DIR
-git clone $GIT_REPO $TMP_DIR
+# Dateien kopieren
+echo "📦 Kopiere Dateien nach Apache-Verzeichnis..."
+cp -r /tmp/server/* "$TARGET"
 
-# 📤 Kopiere nach /var/www/html
-echo "📁 Kopiere Dateien nach /var/www/html..."
-rm -rf /var/www/html/*
-cp -r $TMP_DIR/* /var/www/html/
+# Berechtigungen setzen
+echo "🔐 Setze Dateiberechtigungen..."
+chown -R www-data:www-data "$TARGET"
 
-# 🔧 Rechte setzen
-chown -R www-data:www-data /var/www/html
-chmod -R 755 /var/www/html
+# user.json prüfen
+USER_FILE="$TARGET/user.json"
+ADD_SCRIPT="$TARGET/add_user.sh"
 
-echo "✅ Deployment abgeschlossen! Projekt ist jetzt unter http://localhost/ oder deiner IP erreichbar."
+# Wenn user.json nicht existiert → erstellen
+if [ ! -f "$USER_FILE" ]; then
+  echo "📄 user.json nicht gefunden – erstelle leere Datei..."
+  echo "[]" > "$USER_FILE"
+fi
+
+# Prüfen ob user.json leer ist
+if [ "$(jq length "$USER_FILE")" -eq 0 ]; then
+  echo "👤 user.json ist leer – starte Benutzererstellung über add_user.sh..."
+  if [ -f "$ADD_SCRIPT" ]; then
+    chmod +x "$ADD_SCRIPT"
+    sudo "$ADD_SCRIPT"
+  else
+    echo "⚠️ add_user.sh nicht gefunden – bitte manuell ausführen."
+  fi
+else
+  echo "✅ user.json enthält bereits Benutzer – keine Änderungen vorgenommen."
+fi
+
+echo "✅ Deployment abgeschlossen!"

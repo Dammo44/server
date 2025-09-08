@@ -7,7 +7,10 @@ Ein einfaches Webserver-Projekt mit HTML, CSS, JS und Login-Funktion — bereit 
 
 #save vergesse ich es einzutragen
 
+-sudo apt install apache2
 -sudo apt install php libapache2-mod-php
+-sudo systemctl restart apache2
+
 ---
 
 ## 📦 Projektübersicht

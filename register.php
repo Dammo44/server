@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Kick: Nicht eingeloggt → zurück zur Startseite
+// Kick: Nicht eingeloggt oder kein Owner → zurück zur Startseite
 if (!isset($_SESSION['username']) || strtolower($_SESSION['rank']) !== 'owner') {
     header("Location: index.php");
     exit;
@@ -38,6 +38,7 @@ foreach ($users as $user) {
 $users[] = $newUser;
 file_put_contents($userFile, json_encode($users, JSON_PRETTY_PRINT));
 
-echo "<h2>✅ Benutzer erfolgreich hinzugefügt!</h2>";
-echo "<p><a href='index.php'>Zurück zur Startseite</a></p>";
+// ✅ Erfolgreich → zurück zur Startseite
+header("Location: index.php");
+exit;
 ?>

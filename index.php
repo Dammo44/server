@@ -32,7 +32,9 @@ $isOwner = strtolower($rank) === 'owner';
     <p>Rang: <strong><?php echo htmlspecialchars($rank); ?></strong></p>
 
     <?php if ($isOwner): ?>
-        <p><a href="register.html">➕ Neuen Benutzer hinzufügen</a></p>
+        <form method="GET" action="register.html">
+            <button type="submit">User erstellen</button>
+        </form>
     <?php endif; ?>
 
     <form method="POST" action="logout.php">

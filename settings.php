@@ -44,6 +44,10 @@ if (!isset($_SESSION['username'])) {
         </fieldset>
     </form>
 
-    <p style="text-align:center;"><a href="index.php">⬅️ Zurück zur Startseite</a></p>
+    <div class="action-box">
+        <form action="index.php" method="GET">
+            <button type="submit">⬅️ Zurück zur Startseite</button>
+        </form>
+    </div>
 </body>
 </html>

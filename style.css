@@ -1,4 +1,4 @@
-/* 🌍 Volle Bildschirmhöhe & Hintergrund */
+/* 🌍 Hintergrund & Grundlayout */
 html, body {
     height: 100%;
     margin: 0;
@@ -15,7 +15,15 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
-/* ⚙️ Zahnrad oben rechts (nur wo eingebaut) */
+/* ✅ Erfolgsmeldung */
+.success-msg {
+    text-align: center;
+    color: #00ff99;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* ⚙️ Zahnrad oben rechts */
 .settings-icon {
     position: fixed;
     top: 20px;
@@ -36,23 +44,22 @@ h1, h2 {
     background-color: #ffffff44;
 }
 
-/* 🧰 Aktionen (z. B. User erstellen + Logout) */
+/* 🧰 Aktionen */
 .action-box {
     background-color: #ffffff11;
     border: 1px solid #ffffff55;
     border-radius: 8px;
     padding: 20px;
-    max-width: 320px;
+    max-width: 360px;
     margin: 20px auto;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     gap: 10px;
-    flex-wrap: wrap;
     box-shadow: 0 0 10px rgba(255,255,255,0.2);
 }
 
 .action-box form {
-    display: inline;
+    display: block;
 }
 
 .action-box button {
@@ -62,6 +69,8 @@ h1, h2 {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
 }
 
 .action-box button:hover {
@@ -73,7 +82,7 @@ form {
     background-color: #ffffff11;
     padding: 20px;
     border-radius: 8px;
-    max-width: 320px;
+    max-width: 360px;
     margin: 20px auto;
     box-shadow: 0 0 10px rgba(255,255,255,0.2);
 }
@@ -92,7 +101,8 @@ legend {
 
 /* 🧠 Eingabefelder */
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+select {
     width: 100%;
     padding: 10px;
     margin-top: 8px;
@@ -101,20 +111,6 @@ input[type="password"] {
     border-radius: 4px;
     background-color: #fff;
     color: #000;
-}
-
-/* 🟦 Buttons */
-button {
-    background-color: #ffffff33;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #ffffff55;
 }
 
 /* 📱 Mobile Optimierung */
@@ -129,7 +125,11 @@ button:hover {
     }
 
     .action-box {
-        flex-direction: column;
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    form {
         max-width: 90%;
         padding: 15px;
     }
@@ -137,11 +137,5 @@ button:hover {
     .action-box button {
         font-size: 16px;
         padding: 8px;
-        width: 100%;
-    }
-
-    form {
-        max-width: 90%;
-        padding: 15px;
     }
 }

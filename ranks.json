@@ -1,6 +1,23 @@
 [
-  "user",
-  "admin",
-  "owner",
-  "moderator"
+  {
+    "name": "user",
+    "can_create_user": false,
+    "can_create_rank": false,
+    "can_manage_users": false,
+    "can_manage_ranks": false
+  },
+  {
+    "name": "admin",
+    "can_create_user": true,
+    "can_create_rank": false,
+    "can_manage_users": false,
+    "can_manage_ranks": false
+  },
+  {
+    "name": "owner",
+    "can_create_user": true,
+    "can_create_rank": true,
+    "can_manage_users": true,
+    "can_manage_ranks": true
+  }
 ]

@@ -23,6 +23,16 @@ if (!isset($_SESSION['username']) || strtolower($_SESSION['rank']) !== 'owner') 
             <label for="rank_name">Rangname:</label>
             <input type="text" id="rank_name" name="rank_name" required>
 
+            <label>
+                <input type="checkbox" name="can_create_user" value="1">
+                👤 Darf User erstellen
+            </label><br>
+
+            <label>
+                <input type="checkbox" name="can_create_rank" value="1">
+                🆙 Darf Rang erstellen
+            </label><br>
+
             <button type="submit">Rang speichern</button>
         </fieldset>
     </form>

@@ -11,7 +11,7 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings</title>
+    <title>Einstellungen</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,17 +20,18 @@ if (!isset($_SESSION['username'])) {
     <form action="update_account.php" method="POST">
         <fieldset>
             <legend>✏️ Account ändern</legend>
-            <label>Aktuelles Passwort:</label>
-            <input type="password" name="current_password" required>
 
-            <label>Neuer Anzeigename:</label>
-            <input type="text" name="new_username">
+            <label for="current_password">Aktuelles Passwort:</label>
+            <input type="password" id="current_password" name="current_password" required>
 
-            <label>Neuer Loginname:</label>
-            <input type="text" name="new_profile_name">
+            <label for="new_username">Neuer Anzeigename:</label>
+            <input type="text" id="new_username" name="new_username">
 
-            <label>Neues Passwort:</label>
-            <input type="password" name="new_password">
+            <label for="new_profile_name">Neuer Loginname:</label>
+            <input type="text" id="new_profile_name" name="new_profile_name">
+
+            <label for="new_password">Neues Passwort:</label>
+            <input type="password" id="new_password" name="new_password">
 
             <button type="submit">Änderungen speichern</button>
         </fieldset>
@@ -43,6 +44,6 @@ if (!isset($_SESSION['username'])) {
         </fieldset>
     </form>
 
-    <p><a href="index.php">⬅️ Zurück</a></p>
+    <p style="text-align:center;"><a href="index.php">⬅️ Zurück zur Startseite</a></p>
 </body>
 </html>

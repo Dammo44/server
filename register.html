@@ -3,21 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benutzer hinzufügen</title>
+    <title>Benutzer erstellen</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h2>➕ Neuen Benutzer erstellen</h2>
+
     <form action="register.php" method="POST">
-        <label>Profilname:</label>
-        <input type="text" name="profile_name" required>
-        <label>Passwort:</label>
-        <input type="password" name="password" required>
-        <label>Username (Anzeigename):</label>
-        <input type="text" name="username" required>
-        <label>Rang:</label>
-        <input type="text" name="rank" value="user" required>
-        <button type="submit">Benutzer hinzufügen</button>
+        <fieldset>
+            <legend>Benutzerdaten</legend>
+
+            <label for="profile_name">Profilname:</label>
+            <input type="text" id="profile_name" name="profile_name" required>
+
+            <label for="password">Passwort:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="username">Anzeigename:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="rank">Rang:</label>
+            <input type="text" id="rank" name="rank" value="user" required>
+
+            <button type="submit">Benutzer hinzufügen</button>
+        </fieldset>
     </form>
 </body>
 </html>

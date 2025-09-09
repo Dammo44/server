@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benutzer erstellen</title>
+    <title>Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>➕ Neuen Benutzer erstellen</h2>
+    <h2>🔐 Login</h2>
 
-    <form action="register.php" method="POST">
+    <form action="login.php" method="POST">
         <fieldset>
-            <legend>Benutzerdaten</legend>
+            <legend>Login-Daten</legend>
 
             <label for="profile_name">Profilname:</label>
             <input type="text" id="profile_name" name="profile_name" required>
@@ -19,13 +19,7 @@
             <label for="password">Passwort:</label>
             <input type="password" id="password" name="password" required>
 
-            <label for="username">Anzeigename:</label>
-            <input type="text" id="username" name="username" required>
-
-            <label for="rank">Rang:</label>
-            <input type="text" id="rank" name="rank" value="user" required>
-
-            <button type="submit">Benutzer hinzufügen</button>
+            <button type="submit">Einloggen</button>
         </fieldset>
     </form>
 </body>

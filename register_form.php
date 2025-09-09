@@ -1,8 +1,21 @@
+<?php
+session_start();
+if (!isset($_SESSION['username']) || strtolower($_SESSION['rank']) !== 'owner') {
+    header("Location: index.php");
+    exit;
+}
+
+$ranks = [];
+if (file_exists('ranks.json')) {
+    $json = file_get_contents('ranks.json');
+    $ranks = json_decode($json, true) ?? [];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benutzer erstellen</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -23,16 +36,14 @@
             <input type="text" id="username" name="username" required>
 
             <label for="rank">Rang:</label>
-            <input type="text" id="rank" name="rank" value="user" required>
+            <select id="rank" name="rank" required>
+                <?php foreach ($ranks as $rank): ?>
+                    <option value="<?= htmlspecialchars($rank) ?>"><?= htmlspecialchars($rank) ?></option>
+                <?php endforeach; ?>
+            </select>
 
             <button type="submit">Benutzer hinzufügen</button>
         </fieldset>
     </form>
-
-    <div class="action-box">
-        <form action="index.php" method="GET">
-            <button type="submit">⬅️ Zurück zur Startseite</button>
-        </form>
-    </div>
 </body>
 </html>

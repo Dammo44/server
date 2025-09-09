@@ -1,3 +1,4 @@
+/* 🌐 Grundlayout */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -6,10 +7,12 @@ body {
     padding: 20px;
 }
 
+/* 🧠 Überschriften */
 h1, h2 {
     color: #0055aa;
 }
 
+/* 🔗 Links */
 a {
     color: #0077cc;
     text-decoration: none;
@@ -19,6 +22,7 @@ a:hover {
     text-decoration: underline;
 }
 
+/* 🧾 Formular-Container */
 form {
     background: #fff;
     padding: 20px;
@@ -28,6 +32,7 @@ form {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+/* 🧠 Eingabefelder */
 input[type="text"],
 input[type="password"] {
     width: 100%;
@@ -38,6 +43,7 @@ input[type="password"] {
     border-radius: 4px;
 }
 
+/* 🟦 Buttons */
 button {
     background-color: #0055aa;
     color: white;
@@ -74,4 +80,46 @@ button:hover {
         font-size: 22px;
         text-align: center;
     }
+}
+
+/* 🧭 Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav a, nav button {
+    background-color: #0055aa;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+nav a:hover, nav button:hover {
+    background-color: #003f7f;
+}
+
+/* 🧩 Fieldsets für Settings */
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+legend {
+    font-weight: bold;
+    color: #0055aa;
+    padding: 0 8px;
 }

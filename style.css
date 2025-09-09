@@ -1,10 +1,11 @@
-/* 🌈 Hintergrund mit Farbverlauf */
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(45deg, #ff0000 0%, #000000 100%);
-    color: #fff;
+/* 🌍 Volle Bildschirmhöhe & Hintergrund */
+html, body {
+    height: 100%;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    background: linear-gradient(45deg, #ff0000 0%, #000000 100%);
+    font-family: Arial, sans-serif;
+    color: #fff;
 }
 
 /* 🧠 Überschriften */
@@ -14,11 +15,12 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
-/* ⚙️ Zahnrad oben rechts */
+/* ⚙️ Zahnrad oben rechts (nur wo eingebaut) */
 .settings-icon {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
+    z-index: 1000;
 }
 
 .settings-icon a {
@@ -34,17 +36,18 @@ h1, h2 {
     background-color: #ffffff44;
 }
 
-/* 🧰 Aktionen (User erstellen + Logout) */
+/* 🧰 Aktionen (z. B. User erstellen + Logout) */
 .action-box {
     background-color: #ffffff11;
     border: 1px solid #ffffff55;
     border-radius: 8px;
     padding: 20px;
-    max-width: 300px;
+    max-width: 320px;
     margin: 20px auto;
     display: flex;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
     box-shadow: 0 0 10px rgba(255,255,255,0.2);
 }
 
@@ -54,7 +57,7 @@ h1, h2 {
 
 .action-box button {
     background-color: #ffffff33;
-    color: #fff;
+    color: white;
     padding: 10px 16px;
     border: none;
     border-radius: 4px;
@@ -65,12 +68,12 @@ h1, h2 {
     background-color: #ffffff55;
 }
 
-/* 🧾 Formular-Container */
+/* 🧾 Formulare */
 form {
     background-color: #ffffff11;
     padding: 20px;
     border-radius: 8px;
-    max-width: 300px;
+    max-width: 320px;
     margin: 20px auto;
     box-shadow: 0 0 10px rgba(255,255,255,0.2);
 }
@@ -96,6 +99,8 @@ input[type="password"] {
     margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    background-color: #fff;
+    color: #000;
 }
 
 /* 🟦 Buttons */

@@ -1,44 +1,25 @@
 <?php
 session_start();
-
-// Prüfen, ob Benutzer eingeloggt ist
 if (!isset($_SESSION['username'])) {
     header("Location: login.html");
     exit;
 }
-
-// Rang prüfen
-$rank = $_SESSION['rank'] ?? 'user';
-$isOwner = strtolower($rank) === 'owner';
 ?>
 
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Startseite</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Willkommen</title>
 </head>
 <body>
-    <h1>
-        👋 Willkommen, <?php echo htmlspecialchars($_SESSION['username']); ?>
-        <?php if ($isOwner): ?> 👑 <?php endif; ?>
-    </h1>
+  <h2>👋 Willkommen, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
+  <p>Rang: <?php echo htmlspecialchars($_SESSION['rank']); ?></p>
 
-    <p>Du bist eingeloggt als <strong><?php echo htmlspecialchars($_SESSION['profile_name']); ?></strong></p>
-    <p>Rang: <strong><?php echo htmlspecialchars($rank); ?></strong></p>
+  <?php if ($_SESSION['rank'] === 'owner'): ?>
+    <a href="add_user.php">🧑‍💻 Benutzer hinzufügen</a><br>
+  <?php endif; ?>
 
-    <form method="POST" action="logout.php">
-        <button type="submit">Logout</button>
-    </form>
-
-    <?php if ($isOwner): ?>
-        <form method="GET" action="add_user.php">
-            <button type="submit">🧑‍💻 Benutzer hinzufügen</button>
-        </form>
-    <?php endif; ?>
-
-    <script src="main.js"></script>
+  <a href="logout.php">🚪 Logout</a>
 </body>
 </html>

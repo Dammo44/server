@@ -2,18 +2,14 @@
 session_start();
 
 $userFile = 'user.json';
-
-// Eingaben abholen und trimmen
 $profile = trim($_POST['profile_name'] ?? '');
 $password = $_POST['password'] ?? '';
 
-// Validierung
 if (!$profile || !$password) {
     showError("Bitte alle Felder ausfüllen.");
     exit;
 }
 
-// Datei laden
 if (!file_exists($userFile)) {
     showError("Benutzerdaten nicht gefunden.");
     exit;
@@ -25,7 +21,6 @@ if (!is_array($users)) {
     exit;
 }
 
-// Benutzer suchen
 foreach ($users as $user) {
     if (
         isset($user['profile_name'], $user['password']) &&
@@ -40,25 +35,14 @@ foreach ($users as $user) {
     }
 }
 
-// Wenn kein Benutzer gefunden wurde
 showError("❌ Login fehlgeschlagen. Benutzername oder Passwort ist falsch.");
 exit;
 
-// Fehleranzeige-Funktion
-function showError($message) {
+function showError($msg) {
     echo "<!DOCTYPE html>
     <html lang='de'>
-    <head>
-        <meta charset='UTF-8'>
-        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-        <title>Login Fehler</title>
-        <link rel='stylesheet' href='style.css'>
-    </head>
-    <body>
-        <h2>🔐 Login</h2>
-        <p style='color:red;'>".htmlspecialchars($message)."</p>
-        <a href='login.html'>🔙 Zurück zum Login</a>
-    </body>
+    <head><meta charset='UTF-8'><title>Fehler</title></head>
+    <body><h2 style='color:red;'>$msg</h2><a href='login.html'>🔙 Zurück</a></body>
     </html>";
 }
 ?>

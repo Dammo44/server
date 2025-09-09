@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "profile_name": "admin",
+    "password": "admin123",
+    "username": "Admin",
+    "rank": "owner"
+  }
+]

@@ -15,9 +15,7 @@ if (!file_exists($userFile)) {
     exit;
 }
 
-$content = file_get_contents($userFile);
-$users = json_decode($content, true);
-
+$users = json_decode(file_get_contents($userFile), true);
 if (!is_array($users)) {
     showError("Benutzerdaten sind beschädigt.");
     exit;
@@ -27,7 +25,7 @@ foreach ($users as $user) {
     if (
         isset($user['profile_name'], $user['password']) &&
         $user['profile_name'] === $profile &&
-        password_verify($password, $user['password'])
+        $user['password'] === $password
     ) {
         $_SESSION['username'] = $user['username'] ?? $profile;
         $_SESSION['profile_name'] = $user['profile_name'];

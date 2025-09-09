@@ -18,10 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $hashed = password_hash($password, PASSWORD_DEFAULT);
     $newUser = [
         "profile_name" => $profile,
-        "password" => $hashed,
+        "password" => $password,
         "username" => $username,
         "rank" => $rank
     ];
@@ -45,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <form method="POST">
     <label>Benutzername:</label><input name="username" required><br>
     <label>Profilname:</label><input name="profile_name" required><br>
-    <label>Passwort:</label><input type="password" name="password" required><br>
+    <label>Passwort:</label><input type="text" name="password" required><br>
     <label>Rang:</label>
     <select name="rank">
       <option value="user">User</option>

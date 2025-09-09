@@ -1,121 +1,77 @@
-/* 🌐 Grundlayout */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    margin: 0;
-    padding: 20px;
+/* ⚙️ Zahnrad oben rechts */
+.settings-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 
-/* 🧠 Überschriften */
-h1, h2 {
-    color: #0055aa;
-}
-
-/* 🔗 Links */
-a {
-    color: #0077cc;
+.settings-icon a {
+    font-size: 24px;
+    background-color: #0055aa;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 50%;
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
+.settings-icon a:hover {
+    background-color: #003f7f;
 }
 
-/* 🧾 Formular-Container */
-form {
-    background: #fff;
-    padding: 20px;
+/* 👋 Begrüßung */
+header h1 {
+    margin-top: 60px;
+    font-size: 24px;
+    color: #0055aa;
+    text-align: center;
+}
+
+/* 🧰 Aktionen: User erstellen + Logout */
+.action-box {
+    background-color: #e0e0e0;
+    border: 1px solid #999;
     border-radius: 8px;
+    padding: 20px;
     max-width: 400px;
-    margin: 10px auto;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
-/* 🧠 Eingabefelder */
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* 🟦 Buttons */
-button {
+.action-box button {
     background-color: #0055aa;
     color: white;
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-button:hover {
+.action-box button:hover {
     background-color: #003f7f;
 }
 
-/* 🧭 Header-Menü */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-.header-left h1 {
-    margin: 0;
-    font-size: 24px;
-    color: #0055aa;
-}
-
-.header-right {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.header-right a {
-    font-size: 24px;
-    text-decoration: none;
-    padding: 6px 10px;
-    border-radius: 4px;
-    background-color: #0055aa;
-    color: white;
-}
-
-.header-right a:hover {
-    background-color: #003f7f;
-}
-
-/* 📱 Mobile Optimierung */
+/* 📱 Mobile Anpassung */
 @media (max-width: 480px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .header-left h1 {
+    header h1 {
         font-size: 20px;
-        text-align: left;
+        margin-top: 80px;
     }
 
-    .header-right {
-        margin-top: 10px;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .header-right a {
+    .settings-icon a {
         font-size: 20px;
-        padding: 6px 12px;
+        padding: 6px 10px;
     }
 
-    button {
+    .action-box {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .action-box button {
         font-size: 16px;
-        padding: 8px 16px;
+        padding: 8px;
     }
 }

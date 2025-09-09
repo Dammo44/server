@@ -6,7 +6,6 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 
-// Berechtigungen aus ranks.json laden
 function getRankPermissions($rankName) {
     $ranks = json_decode(file_get_contents('ranks.json'), true);
     foreach ($ranks as $r) {

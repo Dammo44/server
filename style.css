@@ -1,21 +1,21 @@
-/* 🌍 Hintergrund & Grundlayout */
 html, body {
-    height: 100%;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
-    background: linear-gradient(45deg, #ff0000 0%, #000000 100%);
+    background: linear-gradient(to bottom, #ff0000 0%, #000000 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     font-family: Arial, sans-serif;
     color: #fff;
 }
 
-/* 🧠 Überschriften */
 h1, h2 {
     color: #ffffff;
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* ✅ Erfolgsmeldung */
 .success-msg {
     text-align: center;
     color: #00ff99;
@@ -23,7 +23,6 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
-/* ⚙️ Zahnrad oben rechts */
 .settings-icon {
     position: fixed;
     top: 20px;
@@ -44,7 +43,6 @@ h1, h2 {
     background-color: #ffffff44;
 }
 
-/* 🧰 Aktionen */
 .action-box {
     background-color: #ffffff11;
     border: 1px solid #ffffff55;
@@ -77,7 +75,6 @@ h1, h2 {
     background-color: #ffffff55;
 }
 
-/* 🧾 Formulare */
 form {
     background-color: #ffffff11;
     padding: 20px;
@@ -99,7 +96,6 @@ legend {
     padding: 0 8px;
 }
 
-/* 🧠 Eingabefelder */
 input[type="text"],
 input[type="password"],
 select {
@@ -113,7 +109,6 @@ select {
     color: #000;
 }
 
-/* 📱 Mobile Optimierung */
 @media (max-width: 480px) {
     h1, h2 {
         font-size: 20px;

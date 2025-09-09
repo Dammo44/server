@@ -1,79 +1,58 @@
 <?php
 session_start();
-
-// Nur Owner dürfen zugreifen
-if (!isset($_SESSION['rank']) || strtolower($_SESSION['rank']) !== 'owner') {
-    header("Location: index.php");
+if ($_SESSION['rank'] !== 'owner') {
+    echo "❌ Zugriff verweigert.";
     exit;
 }
 
-// Wenn Formular gesendet wurde
+$userFile = 'user.json';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
-    $profile_name = $_POST['profile_name'] ?? '';
+    $profile = $_POST['profile_name'] ?? '';
     $password = $_POST['password'] ?? '';
-    $confirm = $_POST['confirm'] ?? '';
     $rank = $_POST['rank'] ?? 'user';
 
-    if (!$username || !$profile_name || !$password || !$confirm) {
-        $error = "Bitte alle Felder ausfüllen.";
-    } elseif ($password !== $confirm) {
-        $error = "Passwörter stimmen nicht überein.";
-    } else {
-        $hashed = password_hash($password, PASSWORD_DEFAULT);
-
-        $newUser = [
-            "profile_name" => $profile_name,
-            "password" => $hashed,
-            "username" => $username,
-            "rank" => $rank
-        ];
-
-        $file = 'user.json';
-        $users = json_decode(file_get_contents($file), true);
-        $users[] = $newUser;
-        file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT));
-
-        header("Location: index.php");
+    if (!$username || !$profile || !$password) {
+        echo "❌ Alle Felder müssen ausgefüllt sein.";
         exit;
     }
+
+    $hashed = password_hash($password, PASSWORD_DEFAULT);
+    $newUser = [
+        "profile_name" => $profile,
+        "password" => $hashed,
+        "username" => $username,
+        "rank" => $rank
+    ];
+
+    $users = file_exists($userFile) ? json_decode(file_get_contents($userFile), true) : [];
+    $users[] = $newUser;
+    file_put_contents($userFile, json_encode($users, JSON_PRETTY_PRINT));
+    echo "✅ Benutzer erfolgreich hinzugefügt.";
+    exit;
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benutzer hinzufügen</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Benutzer hinzufügen</title>
 </head>
 <body>
-    <h2>🧑‍💻 Neuen Benutzer erstellen</h2>
-    <?php if (isset($error)): ?>
-        <p style="color:red;"><?php echo htmlspecialchars($error); ?></p>
-    <?php endif; ?>
-    <form method="POST">
-        <label>Name:</label>
-        <input type="text" name="username" required>
-
-        <label>Profilname:</label>
-        <input type="text" name="profile_name" required>
-
-        <label>Passwort:</label>
-        <input type="password" name="password" required>
-
-        <label>Passwort erneut:</label>
-        <input type="password" name="confirm" required>
-
-        <label>Rang:</label>
-        <select name="rank">
-            <option value="user">user</option>
-            <option value="mod">mod</option>
-            <option value="owner">owner</option>
-        </select>
-
-        <button type="submit">✅ Benutzer speichern</button>
-    </form>
+  <h2>🧑‍💻 Neuen Benutzer erstellen</h2>
+  <form method="POST">
+    <label>Benutzername:</label><input name="username" required><br>
+    <label>Profilname:</label><input name="profile_name" required><br>
+    <label>Passwort:</label><input type="password" name="password" required><br>
+    <label>Rang:</label>
+    <select name="rank">
+      <option value="user">User</option>
+      <option value="mod">Mod</option>
+      <option value="owner">Owner</option>
+    </select><br>
+    <button type="submit">✅ Hinzufügen</button>
+  </form>
 </body>
 </html>

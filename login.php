@@ -15,7 +15,9 @@ if (!file_exists($userFile)) {
     exit;
 }
 
-$users = json_decode(file_get_contents($userFile), true);
+$content = file_get_contents($userFile);
+$users = json_decode($content, true);
+
 if (!is_array($users)) {
     showError("Benutzerdaten sind beschädigt.");
     exit;

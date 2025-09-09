@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🔐 Login</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>🔐 Login</h2>
-  <form method="POST" action="login.php">
-    <label for="profile_name">Profilname:</label>
-    <input type="text" id="profile_name" name="profile_name" required>
-
-    <label for="password">Passwort:</label>
-    <input type="password" id="password" name="password" required>
-
-    <button type="submit">✅ Einloggen</button>
-  </form>
+    <h2>🔐 Login</h2>
+    <form action="login.php" method="POST">
+        <label>Profilname:</label>
+        <input type="text" name="profile_name" required>
+        <label>Passwort:</label>
+        <input type="password" name="password" required>
+        <button type="submit">Einloggen</button>
+    </form>
 </body>
 </html>

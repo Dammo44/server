@@ -31,6 +31,10 @@ $isOwner = strtolower($rank) === 'owner';
     <p>Du bist eingeloggt als <strong><?php echo htmlspecialchars($_SESSION['profile_name']); ?></strong></p>
     <p>Rang: <strong><?php echo htmlspecialchars($rank); ?></strong></p>
 
+    <?php if ($isOwner): ?>
+        <p><a href="register.html">➕ Neuen Benutzer hinzufügen</a></p>
+    <?php endif; ?>
+
     <form method="POST" action="logout.php">
         <button type="submit">Logout</button>
     </form>

@@ -28,7 +28,7 @@ form {
     padding: 20px;
     border-radius: 8px;
     max-width: 400px;
-    margin: 20px auto;
+    margin: 10px auto;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
@@ -57,69 +57,65 @@ button:hover {
     background-color: #003f7f;
 }
 
-/* 📱 Mobile Optimierung */
-@media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
-
-    form {
-        padding: 15px;
-        margin: 10px auto;
-        max-width: 100%;
-        box-shadow: none;
-    }
-
-    input[type="text"],
-    input[type="password"],
-    button {
-        font-size: 16px;
-    }
-
-    h1, h2 {
-        font-size: 22px;
-        text-align: center;
-    }
-}
-
-/* 🧭 Navigation */
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 20px 0;
+/* 🧭 Header-Menü */
+header {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
-}
-
-nav ul li {
-    display: inline;
-}
-
-nav a, nav button {
-    background-color: #0055aa;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 4px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-}
-
-nav a:hover, nav button:hover {
-    background-color: #003f7f;
-}
-
-/* 🧩 Fieldsets für Settings */
-fieldset {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 15px;
     margin-bottom: 20px;
 }
 
-legend {
-    font-weight: bold;
+.header-left h1 {
+    margin: 0;
+    font-size: 24px;
     color: #0055aa;
-    padding: 0 8px;
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.header-right a {
+    font-size: 24px;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background-color: #0055aa;
+    color: white;
+}
+
+.header-right a:hover {
+    background-color: #003f7f;
+}
+
+/* 📱 Mobile Optimierung */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-left h1 {
+        font-size: 20px;
+        text-align: left;
+    }
+
+    .header-right {
+        margin-top: 10px;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .header-right a {
+        font-size: 20px;
+        padding: 6px 12px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
 }

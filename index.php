@@ -1,13 +1,11 @@
 <?php
 session_start();
 
-// Prüfen, ob Benutzer eingeloggt ist
 if (!isset($_SESSION['username'])) {
     header("Location: login.html");
     exit;
 }
 
-// Rang prüfen
 $rank = $_SESSION['rank'] ?? 'user';
 $isOwner = strtolower($rank) === 'owner';
 ?>
@@ -21,33 +19,28 @@ $isOwner = strtolower($rank) === 'owner';
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.php">🏠 Startseite</a></li>
-            <?php if ($isOwner): ?>
-                <li>
-                    <form method="GET" action="register.html" style="display:inline;">
-                        <button type="submit">User erstellen</button>
-                    </form>
-                </li>
-            <?php endif; ?>
-            <li><a href="settings.php">⚙️ Settings</a></li>
-            <li>
-                <form method="POST" action="logout.php" style="display:inline;">
-                    <button type="submit">Logout</button>
-                </form>
-            </li>
-        </ul>
-    </nav>
+    <header>
+        <div class="header-left">
+            <h1>
+                👋 Willkommen, <?php echo htmlspecialchars($_SESSION['username']); ?>
+                <?php if ($isOwner): ?> 👑 <?php endif; ?>
+            </h1>
+        </div>
+        <div class="header-right">
+            <a href="settings.php" title="Einstellungen">⚙️</a>
+        </div>
+    </header>
 
-    <h1>
-        👋 Willkommen, <?php echo htmlspecialchars($_SESSION['username']); ?>
+    <main>
         <?php if ($isOwner): ?>
-            👑
+            <form method="GET" action="register.html">
+                <button type="submit">User erstellen</button>
+            </form>
         <?php endif; ?>
-    </h1>
 
-    <p>Du bist eingeloggt als <strong><?php echo htmlspecialchars($_SESSION['profile_name']); ?></strong></p>
-    <p>Rang: <strong><?php echo htmlspecialchars($rank); ?></strong></p>
+        <form method="POST" action="logout.php">
+            <button type="submit">Logout</button>
+        </form>
+    </main>
 </body>
 </html>
